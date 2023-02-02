@@ -1,6 +1,6 @@
 import { Patient } from "@/Patient";
 
-export const PatientDirectory = () => {
+const PatientDirectory = () => {
   let directory: Patient[] = [
     new Patient(1, "Juan", 32, "Colombia"),
     new Patient(2, "Esteban", 18, "Italy"),
@@ -13,7 +13,7 @@ export const PatientDirectory = () => {
       <ul>
         {directory.map((patient) => (
           <li key={patient.id}>
-            {patient.name} is {patient.age} years old and is from{" "}
+            {patient.name} is {patient.age} years old and is from
             {patient.nationality}.
           </li>
         ))}
