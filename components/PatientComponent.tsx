@@ -1,4 +1,4 @@
-import { Patient } from "@/Patient";
+import { Patient } from "components/Patient";
 
 const PatientDirectory = () => {
   let directory: Patient[] = [
