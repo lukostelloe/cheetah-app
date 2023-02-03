@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { styled } from "@stitches/react";
+import { JsxElement } from "typescript";
 
 const CustomButton = styled("button", {
   backgroundColor: "rgb(55,120,196)",
@@ -20,7 +21,7 @@ function Button({
   label,
   onClick,
 }: {
-  label: string | number;
+  label: string | number | ReactNode;
   onClick?: () => void;
 }) {
   return <CustomButton onClick={onClick}>{label}</CustomButton>;
