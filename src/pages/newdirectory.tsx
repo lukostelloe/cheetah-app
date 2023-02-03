@@ -3,6 +3,7 @@ import NewPatientComponent from "../../components/NewPatientComponent";
 import { useState } from "react";
 import PatientInputModal from "components/PatientInputModal";
 import { mockPatients } from "mockData/mockPatients";
+import Button from "components/Button";
 
 function Newdirectory() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
@@ -20,15 +21,11 @@ function Newdirectory() {
           </li>
         ))}
       </ul>
-      <button
-        onClick={() =>
-          patientModalOpen
-            ? setPatientModalOpen(false)
-            : setPatientModalOpen(true)
-        }
-      >
-        Add Patient
-      </button>
+      <Button
+        onClick={() => setPatientModalOpen(!patientModalOpen)}
+        label="Add Patient"
+      />
+
       {patientModalOpen && <PatientInputModal />}
     </>
   );

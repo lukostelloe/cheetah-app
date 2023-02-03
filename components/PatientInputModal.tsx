@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Button";
 
 //cosnt AddPatient = () =>{
 //adds the patient to the mockPatient array }
@@ -10,7 +11,7 @@ function PatientInputModal() {
         <input placeholder="name"></input>
         <input placeholder="age"></input>
         <input placeholder="nationality"></input>
-        <button>Add</button>
+        <Button label="Add" />
       </form>
     </div>
   );
