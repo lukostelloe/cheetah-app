@@ -1,5 +1,5 @@
 import React from "react";
-import { mockPatients } from "mockData/mockPatients";
+import { mockPatients } from "components/PatientInputModal";
 import { styled } from "@stitches/react";
 
 const Table = styled("table", {
@@ -17,13 +17,15 @@ const TD = styled("td", {
 });
 
 function PatientTable() {
-  const determinePriority = (priority: number) => {
+  const determinePriority = (priority: number | string) => {
     if (priority < 50) {
       return "green";
-    } else if (priority > 50 && priority < 75) {
+    } else if (priority >= 50 && priority < 75) {
       return "orange";
-    } else {
+    } else if (priority >= 75) {
       return "red";
+    } else {
+      return "white";
     }
   };
 
@@ -42,7 +44,7 @@ function PatientTable() {
         {mockPatients.map((patient) => (
           <tr key={patient.name}>
             <TD>{patient.name}</TD>
-            <TD>{patient.age}</TD>
+            <TD>{patient.dob}</TD>
             <TD>{patient.country}</TD>
             <TD css={{ backgroundColor: determinePriority(patient.priority) }}>
               {patient.priority}

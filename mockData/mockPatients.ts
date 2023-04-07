@@ -1,21 +1,29 @@
-export const mockPatients = [
+export type Patient = {
+  name: string;
+  dob: number;
+  country: string;
+  priority: number | string;
+  photos: string | any;
+};
+
+export const mockPatients: Patient[] = [
   {
     name: "John",
-    age: 32,
+    dob: 32,
     country: "Ireland",
     priority: 95,
     photos: "click to view",
   },
   {
     name: "Mary",
-    age: 31,
+    dob: 31,
     country: "France",
     priority: 70,
     photos: "click to view",
   },
   {
     name: "Stephen",
-    age: 22,
+    dob: 22,
     country: "Mexico",
     priority: 35,
     photos: "click to view",
