@@ -6,6 +6,21 @@ import { styled } from "@stitches/react";
 const FormWrapper = styled("div", {
   backgroundColor: "Aquamarine",
   width: "50%",
+  position: "fixed",
+  top: "15%",
+  left: "50%",
+  transform: "translate(-50%,50%)",
+  zIndex: 99,
+});
+
+const Backdrop = styled("div", {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: "rgba(0,0,0,0.7)",
+  zIndex: 98,
 });
 
 const StyledForm = styled("form", {
@@ -49,6 +64,7 @@ export const mockPatients: Patient[] = [
 ];
 
 function PatientInputModal() {
+  const [patientModalOpen, setPatientModalOpen] = useState(true);
   const [patient, setPatient] = useState({
     name: "",
     dob: "",
@@ -76,23 +92,30 @@ function PatientInputModal() {
     console.log(mockPatients);
 
     e.target.reset();
+    setPatientModalOpen(false);
   };
 
   return (
-    <FormWrapper>
-      <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input name="name" placeholder="Name" />
+    <>
+      {patientModalOpen && (
+        <Backdrop>
+          <FormWrapper>
+            <StyledForm onSubmit={handleSubmit}>
+              <label htmlFor="name">Name:</label>
+              <input name="name" placeholder="Name" />
 
-        <label htmlFor="dob">DOB:</label>
-        <input name="dob" placeholder="Age" />
+              <label htmlFor="dob">DOB:</label>
+              <input name="dob" placeholder="Age" />
 
-        <label htmlFor="Nationality">Nationality:</label>
-        <input name="nationality" placeholder="Nationality" />
+              <label htmlFor="Nationality">Nationality:</label>
+              <input name="nationality" placeholder="Nationality" />
 
-        <Button label="Add" />
-      </StyledForm>
-    </FormWrapper>
+              <Button label="Add" />
+            </StyledForm>
+          </FormWrapper>
+        </Backdrop>
+      )}
+    </>
   );
 }
 

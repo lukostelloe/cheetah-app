@@ -18,12 +18,14 @@ const TD = styled("td", {
 
 function PatientTable() {
   const determinePriority = (priority: number | string) => {
-    if (priority < 50) {
-      return "green";
-    } else if (priority >= 50 && priority < 75) {
-      return "orange";
-    } else if (priority >= 75) {
-      return "red";
+    if (typeof priority === "number") {
+      if (priority < 50) {
+        return "green";
+      } else if (priority >= 50 && priority < 75) {
+        return "orange";
+      } else if (priority >= 75) {
+        return "red";
+      }
     } else {
       return "white";
     }
