@@ -2,8 +2,8 @@ export type Patient = {
   name: string;
   dob: number;
   country: string;
-  priority: number | string;
-  photos: string | any;
+  priority?: number | string | any;
+  photos?: string | any;
 };
 
 export const mockPatients: Patient[] = [

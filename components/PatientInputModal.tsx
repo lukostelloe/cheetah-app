@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { styled } from "@stitches/react";
+import { mockPatients } from "mockData/mockPatients";
 
 // Styles
 const FormWrapper = styled("div", {
@@ -29,69 +30,20 @@ const StyledForm = styled("form", {
   padding: "10px",
 });
 
-// Custom types
-type Patient = {
-  name: string;
-  dob: number;
-  country: string;
-  priority: number | string;
-  photos: string | any;
-};
-
-// mockPatient list in the same file to be able to add entries
-export const mockPatients: Patient[] = [
-  {
-    name: "John",
-    dob: 32,
-    country: "Ireland",
-    priority: 95,
-    photos: "click to view",
-  },
-  {
-    name: "Mary",
-    dob: 31,
-    country: "France",
-    priority: 70,
-    photos: "click to view",
-  },
-  {
-    name: "Stephen",
-    dob: 22,
-    country: "Mexico",
-    priority: 35,
-    photos: "click to view",
-  },
-];
-
 function PatientInputModal() {
   const [patientModalOpen, setPatientModalOpen] = useState(true);
-  const [patient, setPatient] = useState({
+  const [patientList, setPatientList] = useState(mockPatients);
+
+  const [newPatient, setNewPatient] = useState({
     name: "",
-    dob: "",
+    dob: 0,
     country: "",
-    priority: "-",
-    photos: "no photos",
   });
 
-  const handleSubmit = (e) => {
+  // @ts-expect-error
+  const addNewPatient = (e) => {
     e.preventDefault();
-
-    const newPatient = {
-      name: e.target.name.value,
-      dob: e.target.dob.value,
-      country: e.target.nationality.value,
-      priority: "-",
-      photos: "no photos",
-    };
-
-    setPatient(newPatient);
-
-    mockPatients.push(newPatient);
-
-    // verify that local list was updated
-    console.log(mockPatients);
-
-    e.target.reset();
+    setPatientList((mockPatients) => [newPatient, ...mockPatients]);
     setPatientModalOpen(false);
   };
 
@@ -100,15 +52,34 @@ function PatientInputModal() {
       {patientModalOpen && (
         <Backdrop>
           <FormWrapper>
-            <StyledForm onSubmit={handleSubmit}>
+            <StyledForm onSubmit={addNewPatient}>
               <label htmlFor="name">Name:</label>
-              <input name="name" placeholder="Name" />
+              <input
+                value={newPatient.name}
+                name="name"
+                placeholder="Name"
+                onChange={(e) =>
+                  setNewPatient({ ...newPatient, name: e.target.value })
+                }
+              />
 
               <label htmlFor="dob">DOB:</label>
-              <input name="dob" placeholder="Age" />
-
+              <input
+                name="dob"
+                placeholder="Age"
+                onChange={(e) =>
+                  // @ts-expect-error
+                  setNewPatient({ ...newPatient, dob: e.target.value })
+                }
+              />
               <label htmlFor="Nationality">Nationality:</label>
-              <input name="nationality" placeholder="Nationality" />
+              <input
+                name="nationality"
+                placeholder="Nationality"
+                onChange={(e) =>
+                  setNewPatient({ ...newPatient, country: e.target.value })
+                }
+              />
 
               <Button label="Add" />
             </StyledForm>
