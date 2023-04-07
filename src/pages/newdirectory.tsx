@@ -23,7 +23,7 @@ function Newdirectory() {
           <li key={patient.name}>
             <NewPatientComponent
               name={patient.name}
-              age={patient.age}
+              age={patient.dob}
               nationality={patient.country}
             />
           </li>
