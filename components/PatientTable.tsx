@@ -1,5 +1,5 @@
 import React from "react";
-import { mockPatients } from "components/PatientInputModal";
+import { mockPatients } from "mockData/mockPatients";
 import { styled } from "@stitches/react";
 
 const Table = styled("table", {
