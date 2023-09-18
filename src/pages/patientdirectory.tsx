@@ -6,8 +6,9 @@ import { mockPatients } from "mockData/mockPatients";
 import Button from "components/Button";
 import PatientTable from "components/PatientTable";
 import { SectionHeader } from "components/SectionHeader";
+import { Page } from "components/Page";
 
-function Newdirectory() {
+function Patientdirectory() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
   return (
     <>
@@ -35,4 +36,4 @@ function Newdirectory() {
   );
 }
 
-export default Newdirectory;
+export default Patientdirectory;

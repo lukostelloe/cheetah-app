@@ -10,6 +10,7 @@ const NavBarWrapper = styled("div", {
   justifyContent: "space-evenly",
   alignItems: "space-evenly",
   background: "grey",
+  height: "100vh",
 });
 
 function NavBar() {
@@ -21,7 +22,7 @@ function NavBar() {
       <Link href="/">
         <Button label="Home" />
       </Link>
-      <Link href="/newdirectory">
+      <Link href="/patientdirectory">
         <Button label="Patients" />
       </Link>
       <Link href="/photosdirectory">
