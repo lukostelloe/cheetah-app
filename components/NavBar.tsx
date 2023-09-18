@@ -5,12 +5,19 @@ import Link from "next/link";
 import React from "react";
 
 const NavBarWrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  alignItems: "space-evenly",
   background: "grey",
 });
 
 function NavBar() {
   return (
     <NavBarWrapper>
+      <Link href="/login">
+        <Button label="Login" />
+      </Link>
       <Link href="/">
         <Button label="Home" />
       </Link>
