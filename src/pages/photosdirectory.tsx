@@ -1,7 +1,7 @@
 import React from "react";
-import { PageHeader } from "components/PageHeader";
-import Button from "components/Button";
-import { SectionHeader } from "components/SectionHeader";
+import { PageHeader } from "@/components/PageHeader";
+import Button from "@/components/Button";
+import { SectionHeader } from "@/components/SectionHeader";
 
 function Photosdirectory() {
   return (

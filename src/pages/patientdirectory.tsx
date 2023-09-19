@@ -1,13 +1,14 @@
 import React from "react";
-import NewPatientComponent from "../../components/NewPatientComponent";
+import NewPatientComponent from "../components/NewPatientComponent";
 import { useState } from "react";
-import PatientInputModal from "components/PatientInputModal";
+import PatientInputModal from "@/components/PatientInputModal";
 import { mockPatients } from "mockData/mockPatients";
-import Button from "components/Button";
-import PatientTable from "components/PatientTable";
-import { SectionHeader } from "components/SectionHeader";
+import Button from "@/components/Button";
+import PatientTable from "@/components/PatientTable";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Page } from "@/components/Page";
 
-function Newdirectory() {
+function Patientdirectory() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
   return (
     <>
@@ -35,4 +36,4 @@ function Newdirectory() {
   );
 }
 
-export default Newdirectory;
+export default Patientdirectory;
