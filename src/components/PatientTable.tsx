@@ -1,22 +1,21 @@
 import React from "react";
-import { mockPatients } from "mockData/mockPatients";
 import { styled } from "@stitches/react";
 
-const Table = styled("table", {
+const StyledTable = styled("table", {
   width: "100%",
   padding: "20px",
   border: "1px solid black",
 });
 
-const TH = styled("th", {
+const StyledTh = styled("th", {
   border: "1px solid black",
 });
 
-const TD = styled("td", {
+const StyledTd = styled("td", {
   border: "1px solid black",
 });
 
-function PatientTable() {
+const PatientTable = ({ data }: any) => {
   const determinePriority = (priority: number | string) => {
     if (typeof priority === "number") {
       if (priority < 50) {
@@ -32,31 +31,35 @@ function PatientTable() {
   };
 
   return (
-    <Table>
+    <StyledTable>
       <thead>
         <tr>
-          <TH>Firstname</TH>
-          <TH>Age</TH>
-          <TH>Country</TH>
-          <TH>Priority</TH>
-          <TH>Photos</TH>
+          <StyledTh>Firstname</StyledTh>
+          <StyledTh>Lastname</StyledTh>
+          <StyledTh>DOB</StyledTh>
+          <StyledTh>Country</StyledTh>
+          <StyledTh>Priority</StyledTh>
+          <StyledTh>Photos</StyledTh>
         </tr>
       </thead>
       <tbody>
-        {mockPatients.map((patient) => (
-          <tr key={patient.name}>
-            <TD>{patient.name}</TD>
-            <TD>{patient.dob}</TD>
-            <TD>{patient.country}</TD>
-            <TD css={{ backgroundColor: determinePriority(patient.priority) }}>
+        {data.map((patient: any) => (
+          <tr key={patient.id}>
+            <StyledTd>{patient.firstName}</StyledTd>
+            <StyledTd>{patient.lastName}</StyledTd>
+            <StyledTd>{patient.dateOfBirth}</StyledTd>
+            <StyledTd>{patient.country}</StyledTd>
+            <StyledTd
+              css={{ backgroundColor: determinePriority(patient.priority) }}
+            >
               {patient.priority}
-            </TD>
-            <TD>{patient.photos}</TD>
+            </StyledTd>
+            <StyledTd>{patient.photos}</StyledTd>
           </tr>
         ))}
       </tbody>
-    </Table>
+    </StyledTable>
   );
-}
+};
 
 export default PatientTable;

@@ -14,6 +14,7 @@ const CustomButton = styled("button", {
   boxShadow: "none",
   border: "none",
   textTransform: "uppercase",
+  maxWidth: "150px",
 });
 
 function Button({

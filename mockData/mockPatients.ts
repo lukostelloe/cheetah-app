@@ -1,5 +1,7 @@
 export type Patient = {
-  name: string;
+  id?: number;
+  firstName: string;
+  lastName: string;
   dob: number;
   country: string;
   priority?: number | string | any;
@@ -8,21 +10,24 @@ export type Patient = {
 
 export const mockPatients: Patient[] = [
   {
-    name: "John",
+    firstName: "John",
+    lastName: "O'Toole",
     dob: 32,
     country: "Ireland",
     priority: 95,
     photos: "click to view",
   },
   {
-    name: "Mary",
+    firstName: "Mary",
+    lastName: "Higgins",
     dob: 31,
     country: "France",
     priority: 70,
     photos: "click to view",
   },
   {
-    name: "Stephen",
+    firstName: "Stephen",
+    lastName: "Ramirez",
     dob: 22,
     country: "Mexico",
     priority: 35,

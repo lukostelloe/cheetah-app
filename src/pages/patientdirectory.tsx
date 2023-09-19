@@ -1,15 +1,26 @@
 import React from "react";
 import NewPatientComponent from "../components/NewPatientComponent";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PatientInputModal from "@/components/PatientInputModal";
 import { mockPatients } from "mockData/mockPatients";
 import Button from "@/components/Button";
 import PatientTable from "@/components/PatientTable";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Page } from "@/components/Page";
 
 function Patientdirectory() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    fetch("/api/getData")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((error) => console.error("Error:", error));
+  }, []);
+
   return (
     <>
       <h2>Patient Directory Refactored</h2>
@@ -20,18 +31,20 @@ function Patientdirectory() {
       {patientModalOpen && <PatientInputModal />}
       <SectionHeader>Recent Patients:</SectionHeader>
       <ul>
-        {mockPatients.map((patient) => (
-          <li key={patient.name}>
+        {data.map((patient: any) => (
+          <li key={patient.id} style={{ listStyleType: "none" }}>
             <NewPatientComponent
-              name={patient.name}
-              age={patient.dob}
+              firstName={patient.firstName}
+              lastName={patient.lastName}
+              dateOfBirth={patient.dateOfBirth}
               nationality={patient.country}
+              priority={patient.priority}
             />
           </li>
         ))}
       </ul>
       <SectionHeader>Patients Table:</SectionHeader>
-      <PatientTable />
+      <PatientTable data={data} />
     </>
   );
 }

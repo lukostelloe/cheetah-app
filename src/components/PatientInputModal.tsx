@@ -35,14 +35,16 @@ function PatientInputModal() {
   const [patientList, setPatientList] = useState(mockPatients);
 
   const [newPatient, setNewPatient] = useState({
-    name: "",
-    dob: 0,
+    firstName: "",
+    lastName: "",
+    dateOfBirth: 0,
     country: "",
   });
 
   // @ts-expect-error
   const addNewPatient = (e) => {
     e.preventDefault();
+    // @ts-expect-error
     setPatientList((mockPatients) => [newPatient, ...mockPatients]);
     setPatientModalOpen(false);
   };
@@ -53,17 +55,26 @@ function PatientInputModal() {
         <Backdrop>
           <FormWrapper>
             <StyledForm onSubmit={addNewPatient}>
-              <label htmlFor="name">Name:</label>
+              <label htmlFor="name">First Name:</label>
               <input
-                value={newPatient.name}
+                value={newPatient.firstName}
                 name="name"
-                placeholder="Name"
+                placeholder="First Name"
                 onChange={(e) =>
-                  setNewPatient({ ...newPatient, name: e.target.value })
+                  setNewPatient({ ...newPatient, firstName: e.target.value })
+                }
+              />
+              <label htmlFor="name">Surname:</label>
+              <input
+                value={newPatient.lastName}
+                name="name"
+                placeholder="Surname"
+                onChange={(e) =>
+                  setNewPatient({ ...newPatient, lastName: e.target.value })
                 }
               />
 
-              <label htmlFor="dob">DOB:</label>
+              <label htmlFor="dob">Date Of Birth:</label>
               <input
                 name="dob"
                 placeholder="Age"
@@ -72,15 +83,14 @@ function PatientInputModal() {
                   setNewPatient({ ...newPatient, dob: e.target.value })
                 }
               />
-              <label htmlFor="Nationality">Nationality:</label>
+              <label htmlFor="Nationality">Country of origin</label>
               <input
                 name="nationality"
-                placeholder="Nationality"
+                placeholder="Country of origin"
                 onChange={(e) =>
                   setNewPatient({ ...newPatient, country: e.target.value })
                 }
               />
-
               <Button label="Add" />
             </StyledForm>
           </FormWrapper>

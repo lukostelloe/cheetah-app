@@ -23,7 +23,7 @@ function NavBar() {
         <Button label="Home" />
       </Link>
       <Link href="/patientdirectory">
-        <Button label="Patients" />
+        <Button label="Patient Directory" />
       </Link>
       <Link href="/photosdirectory">
         <Button label="Photos" />

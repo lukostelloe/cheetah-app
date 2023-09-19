@@ -10,20 +10,26 @@ const PatientWrapper = styled("div", {
 });
 
 function NewPatientComponent({
-  name,
-  age,
+  firstName,
+  lastName,
+  dateOfBirth,
   nationality,
+  priority,
 }: {
-  name: string;
-  age?: number;
+  firstName: string;
+  lastName: string;
+  dateOfBirth?: number;
   nationality?: string;
+  priority?: number;
 }) {
   return (
     <PatientWrapper>
-      <ul>
-        <li>Name: {name}</li>
-        {age && <li>Age: {age}</li>}
+      <ul style={{ listStyleType: "none" }}>
+        {firstName && <li>Name: {firstName}</li>}
+        {lastName && <li>Surname: {lastName}</li>}
+        {dateOfBirth && <li>DOB: {dateOfBirth}</li>}
         {nationality && <li>Nationality:{nationality}</li>}
+        {priority && <li>Priority:{priority}</li>}
       </ul>
     </PatientWrapper>
   );
