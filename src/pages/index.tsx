@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { toDoList } from "mockData/toDoList";
 import Link from "next/link";
-import { SectionHeader } from "components/SectionHeader";
-import { PageHeader } from "components/PageHeader";
-import { Page } from "components/Page";
+import { SectionHeader } from "@/components/SectionHeader";
+import { PageHeader } from "@/components/PageHeader";
+import { Page } from "@/components/Page";
 
 export default function Home() {
   return (

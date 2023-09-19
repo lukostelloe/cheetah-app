@@ -9,7 +9,7 @@ type InputProps = {
 const StyledInput = styled("input", {
   border: "1px solid #3778C4",
   borderRadius: "3px",
-  width: "300px",
+  width: "200px",
   height: "25px",
   marginBottom: "5px",
 });

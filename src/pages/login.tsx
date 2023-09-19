@@ -1,10 +1,10 @@
 import React from "react";
-import { Page } from "components/Page";
+import { Page } from "@/components/Page";
 import Image from "next/image";
 import CheetahImage from "../../public/images/cheetah.png";
 import { styled } from "@stitches/react";
-import Input from "components/Input";
-import Button from "components/Button";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 const LoginPageStyles = {
   display: "flex",
@@ -20,7 +20,7 @@ const LoginDiv = styled("div", {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  width: "25%",
+  width: "30%",
 });
 
 function Login() {
