@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import NavBar from "@/components/NavBar";
 import { styled } from "@stitches/react";
+import { SessionProvider } from "next-auth/react";
 
 const AppLayout = styled("div", {
   display: "flex",
@@ -11,7 +12,6 @@ const AppLayout = styled("div", {
 
 const NavBarWrapper = styled("div", {
   flex: "0 0 auto", // Keep the NavBar fixed to its size
-  width: "250px", // Set a fixed width for the NavBar
   backgroundColor: "#333", // Optional: Styling for the NavBar
 });
 
@@ -20,15 +20,20 @@ const ContentWrapper = styled("div", {
   padding: "20px", // Optional: Add padding to the content area
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
-    <AppLayout>
-      <NavBarWrapper>
-        <NavBar />
-      </NavBarWrapper>
-      <ContentWrapper>
-        <Component {...pageProps} />
-      </ContentWrapper>
-    </AppLayout>
+    <SessionProvider session={session}>
+      <AppLayout>
+        <NavBarWrapper>
+          <NavBar />
+        </NavBarWrapper>
+        <ContentWrapper>
+          <Component {...pageProps} />
+        </ContentWrapper>
+      </AppLayout>
+    </SessionProvider>
   );
 }

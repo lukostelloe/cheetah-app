@@ -76,9 +76,3 @@ export const HomePage = () => {
 };
 
 export default HomePage;
-
-//react component
-
-//function defining the component
-//function logic
-//return statement, which returns visible information

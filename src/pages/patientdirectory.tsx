@@ -1,8 +1,7 @@
 import React from "react";
-import NewPatientComponent from "../components/NewPatientComponent";
+import PatientComponent from "../components/PatientComponent";
 import { useState, useEffect } from "react";
 import PatientInputModal from "@/components/PatientInputModal";
-import { mockPatients } from "mockData/mockPatients";
 import Button from "@/components/Button";
 import PatientTable from "@/components/PatientTable";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -33,7 +32,7 @@ function Patientdirectory() {
       <ul>
         {data.map((patient: any) => (
           <li key={patient.id} style={{ listStyleType: "none" }}>
-            <NewPatientComponent
+            <PatientComponent
               firstName={patient.firstName}
               lastName={patient.lastName}
               dateOfBirth={patient.dateOfBirth}
