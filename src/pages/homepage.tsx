@@ -14,16 +14,6 @@ const LoginDiv = styled("div", {
   padding: "10px",
 });
 
-//create patientinformation page
-//create seperate file with fake patient data
-
-//file called mockPatients
-//inside would be an object with patient name, id, nationality, year of birth
-
-//with that patient object, import it into this file, and use create a function that swaps between patients and displays their information
-//patient.name, patient.id, etc.....
-
-//components can be created and then injected into JSX
 const PatientDetails = ({
   patientid,
   patientNat,

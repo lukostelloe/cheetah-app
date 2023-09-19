@@ -65,22 +65,34 @@ const AccordionDemo = () => (
   <AccordionRoot type="single" defaultValue="item-1" collapsible>
     <AccordionItem value="item-1">
       <AccordionTrigger>Is it accessible?</AccordionTrigger>
-      <AccordionContent>
-        Yes. It adheres to the WAI-ARIA design pattern.
-      </AccordionContent>
+      <AccordionContent>Yes. Anyone can access and use it</AccordionContent>
     </AccordionItem>
 
     <AccordionItem value="item-2">
-      <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+      <AccordionTrigger>
+        Can I add patients to my own database?
+      </AccordionTrigger>
       <AccordionContent>
-        Yes. Its unstyled by default, giving you freedom over the look and feel.
+        Yes. Each user has the ability to add, edit and remove a patient
       </AccordionContent>
     </AccordionItem>
 
     <AccordionItem value="item-3">
-      <AccordionTrigger>Can it be animated?</AccordionTrigger>
+      <AccordionTrigger>
+        Can my information be shared with colleagues?
+      </AccordionTrigger>
       <AccordionContent>
-        Yes! You can animate the Accordion with CSS or JavaScript.
+        Yes. Cheetah makes it easy to share your findings with colleagues
+      </AccordionContent>
+    </AccordionItem>
+
+    <AccordionItem value="item-4">
+      <AccordionTrigger>
+        Can I share the information with local hospitals?
+      </AccordionTrigger>
+      <AccordionContent>
+        Yes. With Cheetah, you can contact and share files easily with hospitals
+        in your contacts list
       </AccordionContent>
     </AccordionItem>
   </AccordionRoot>

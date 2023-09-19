@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { toDoList } from "mockData/toDoList";
-import Link from "next/link";
 import { SectionHeader } from "@/components/SectionHeader";
 import { PageHeader } from "@/components/PageHeader";
 import { Page } from "@/components/Page";
@@ -26,7 +25,6 @@ export default function Home() {
           ))}
         </ul>
         <SectionHeader>Links</SectionHeader>
-        <Link href="/newdirectory">New Patient Directory</Link>
       </main>
     </Page>
   );

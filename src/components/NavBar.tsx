@@ -4,8 +4,11 @@ import Button from "./Button";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import AvatarDemo from "./Avatar";
 
 import CheetahImage from "../../public/images/cheetah.png";
+import SettingsIcon from "../../public/images/settingsIcon.png";
+import SwitchDemo from "./Switch";
 
 const NavBarWrapper = styled("div", {
   display: "flex",
@@ -13,21 +16,30 @@ const NavBarWrapper = styled("div", {
   alignItems: "space-evenly",
   justifyContent: "space-evenly",
   height: "100vh",
+  backgroundColor: "grey",
+  maxWidth: "250px",
 });
 
-const Flex = styled("div", {
+const LogoContainer = styled("div", {
   display: "flex",
   flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+});
+
+const AvatarContainer = styled("div", {
+  display: "flex",
   alignItems: "center",
 });
 
 function NavBar() {
   return (
     <NavBarWrapper>
-      <Flex>
+      <LogoContainer>
         <Image src={CheetahImage} alt="cheetah" width={50} />
-        <p>Cheetah</p>
-      </Flex>
+        <>Cheetah</>
+        <SwitchDemo />
+      </LogoContainer>
 
       <Link href="/login">
         <Button label="Login" />
@@ -44,9 +56,20 @@ function NavBar() {
       <Link href="/settings">
         <Button label="Settings" />
       </Link>
+      <Link href="/contacts">
+        <Button label="Contacts" />
+      </Link>
       <Link href="/faq">
         <Button label="Faq" />
       </Link>
+      <AvatarContainer>
+        <AvatarDemo />
+        <div>
+          <p>Luke Example</p>
+          <p>example@gmail.com</p>
+        </div>
+        <Image src={SettingsIcon} alt="settings" width={25} />
+      </AvatarContainer>
     </NavBarWrapper>
   );
 }
