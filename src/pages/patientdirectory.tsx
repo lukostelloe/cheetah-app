@@ -5,6 +5,7 @@ import PatientInputModal from "@/components/PatientInputModal";
 import Button from "@/components/Button";
 import PatientTable from "@/components/PatientTable";
 import { SectionHeader } from "@/components/SectionHeader";
+import { Page } from "@/components/Page";
 
 function Patientdirectory() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
@@ -21,7 +22,7 @@ function Patientdirectory() {
   }, []);
 
   return (
-    <>
+    <Page>
       <h2>Patient Directory Refactored</h2>
       <Button
         onClick={() => setPatientModalOpen(!patientModalOpen)}
@@ -44,7 +45,7 @@ function Patientdirectory() {
       </ul>
       <SectionHeader>Patients Table:</SectionHeader>
       <PatientTable data={data} />
-    </>
+    </Page>
   );
 }
 

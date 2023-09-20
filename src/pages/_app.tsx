@@ -1,8 +1,14 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import NavBar from "@/components/NavBar";
+import PersistentDrawerLeft from "@/components/mui-drawer";
 import { styled } from "@stitches/react";
 import { SessionProvider } from "next-auth/react";
+import CssBaseline from "@mui/material/CssBaseline";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const AppLayout = styled("div", {
   display: "flex",
@@ -17,23 +23,18 @@ const NavBarWrapper = styled("div", {
 
 const ContentWrapper = styled("div", {
   flex: 1, // Allow the content to expand and fill available space
-  padding: "20px", // Optional: Add padding to the content area
 });
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+export default function App({ Component, ...pageProps }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <AppLayout>
-        <NavBarWrapper>
-          <NavBar />
-        </NavBarWrapper>
-        <ContentWrapper>
-          <Component {...pageProps} />
-        </ContentWrapper>
-      </AppLayout>
-    </SessionProvider>
+    <AppLayout>
+      {/* <NavBarWrapper>
+        <NavBar />
+      </NavBarWrapper> */}
+      <PersistentDrawerLeft />
+      <ContentWrapper>
+        <Component {...pageProps} />
+      </ContentWrapper>
+    </AppLayout>
   );
 }

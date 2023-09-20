@@ -1,7 +1,12 @@
 import React from "react";
+import { Page } from "@/components/Page";
 
 function Settings() {
-  return <div>Settings</div>;
+  return (
+    <Page>
+      <div>Settings</div>
+    </Page>
+  );
 }
 
 export default Settings;
