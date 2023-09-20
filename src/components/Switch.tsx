@@ -15,8 +15,8 @@ const SwitchDemo = () => (
 
 const SwitchRoot = styled(Switch.Root, {
   all: "unset",
-  width: 42,
-  height: 25,
+  width: 37,
+  height: 20,
   backgroundColor: blackA.blackA9,
   borderRadius: "9999px",
   position: "relative",
@@ -32,8 +32,8 @@ const SwitchRoot = styled(Switch.Root, {
 
 const SwitchThumb = styled(Switch.Thumb, {
   display: "block",
-  width: 21,
-  height: 21,
+  width: 16,
+  height: 16,
   backgroundColor: "white",
   borderRadius: "9999px",
   boxShadow: `0 2px 2px ${blackA.blackA7}`,
