@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Page } from "@/components/Page";
 
-function Photosdirectory() {
+function Photos() {
   return (
     <Page>
       <PageHeader>Photos</PageHeader>
@@ -16,4 +16,4 @@ function Photosdirectory() {
   );
 }
 
-export default Photosdirectory;
+export default Photos;

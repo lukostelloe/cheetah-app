@@ -29,6 +29,11 @@ import HelpIcon from "@mui/icons-material/Help";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Link from "next/link";
+import CheetahImage from "../../public/images/cheetah.png";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+import ConvertToTitleCase from "@/utils/convertToTitleCase";
 
 const drawerWidth = 240;
 
@@ -41,14 +46,7 @@ const icons = [
   <HelpIcon key="helpIcon" />,
 ];
 
-const links = [
-  "/",
-  "/patientdirectory",
-  "/photosdirectory",
-  "/settings",
-  "/contacts",
-  "/faq",
-];
+const links = ["/", "/patients", "/photos", "/settings", "/contacts", "/faq"];
 
 const usericons = [
   <LogoutIcon key="logoutIcon" />,
@@ -128,6 +126,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer() {
+  const router = useRouter();
+  const currentAddress = router.pathname;
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -157,12 +157,30 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Cheetah
+            Cheetah{" "}
+            {currentAddress === "/"
+              ? "Home"
+              : ConvertToTitleCase(currentAddress.substring(1))}
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              marginRight: "50px",
+            }}
+          >
+            <Image
+              src={CheetahImage}
+              alt="Cheetah"
+              width={30}
+              style={{ marginRight: "20px" }}
+            />
+            <p>Cheetah</p>
+          </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -175,7 +193,7 @@ export default function MiniDrawer() {
         <List>
           {["Home", "Patients", "Photos", "Settings", "Contacts", "Faq"].map(
             (text, index) => (
-              <Link href={links[index]} key={text}>
+              <Link href={links[index]} key={text} style={{ color: "inherit" }}>
                 <ListItem key={text} disablePadding sx={{ display: "block" }}>
                   <ListItemButton
                     sx={{
@@ -206,7 +224,11 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {["Logout", "User", "Lightmode"].map((text, index) => (
-            <Link href={userlinks[index]} key={text}>
+            <Link
+              href={userlinks[index]}
+              key={text}
+              style={{ color: "inherit" }}
+            >
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{

@@ -7,7 +7,7 @@ import PatientTable from "@/components/PatientTable";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Page } from "@/components/Page";
 
-function Patientdirectory() {
+function Patients() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
   const [data, setData] = useState<any>([]);
 
@@ -49,4 +49,4 @@ function Patientdirectory() {
   );
 }
 
-export default Patientdirectory;
+export default Patients;
