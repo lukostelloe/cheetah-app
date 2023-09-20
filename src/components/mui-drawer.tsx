@@ -41,12 +41,12 @@ const icons = [
   <HomeIcon key="homeIcon" />,
   <ContactEmergencyIcon key="contactEmergencyIcon" />,
   <ImageSearchIcon key="imageSearchIcon" />,
-  <SettingsIcon key="settingsIcon" />,
   <ContactsIcon key="contactsIcon" />,
   <HelpIcon key="helpIcon" />,
+  <SettingsIcon key="settingsIcon" />,
 ];
 
-const links = ["/", "/patients", "/photos", "/settings", "/contacts", "/faq"];
+const links = ["/", "/patients", "/photos", "/contacts", "/faq", "/settings"];
 
 const usericons = [
   <LogoutIcon key="logoutIcon" />,
@@ -191,7 +191,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Home", "Patients", "Photos", "Settings", "Contacts", "Faq"].map(
+          {["Home", "Patients", "Photos", "Contacts", "Faq", "Settings"].map(
             (text, index) => (
               <Link href={links[index]} key={text} style={{ color: "inherit" }}>
                 <ListItem key={text} disablePadding sx={{ display: "block" }}>
