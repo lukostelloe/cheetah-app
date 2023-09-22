@@ -13,36 +13,6 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-  price: number
-) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
-  };
-}
-
 function Row(props: { row: any }) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -72,31 +42,20 @@ function Row(props: { row: any }) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Photos here
-              </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>not needed atm</TableCell>
-                    <TableCell>not needed atm</TableCell>
-                    <TableCell align="right">not needed atm</TableCell>
-                    <TableCell align="right">not needed atm</TableCell>
+                    <TableCell>Photo</TableCell>
+                    <TableCell>Priority</TableCell>
+                    <TableCell>Upload date</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {/* {row.history.map((historyRow: any) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))} */}
+                  <TableRow>
+                    <TableCell>image.jpg</TableCell>
+                    <TableCell>high example</TableCell>
+                    <TableCell>23/23/23 example</TableCell>
+                  </TableRow>
                 </TableBody>
               </Table>
             </Box>
@@ -106,40 +65,6 @@ function Row(props: { row: any }) {
     </React.Fragment>
   );
 }
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-];
-
-const pretendData = [
-  {
-    id: 1,
-    firstName: "john",
-    lastName: "ototo",
-    country: "ireland",
-    priority: 50,
-    photos: 2,
-  },
-  {
-    id: 2,
-    firstName: "dev",
-    lastName: "ototo",
-    country: "france",
-    priority: 96,
-    photos: 2,
-  },
-  {
-    id: 3,
-    firstName: "fun",
-    country: "ireland",
-    priority: 50,
-    photos: 3,
-  },
-];
 
 interface Patient {
   id: number;
