@@ -1,16 +1,24 @@
 import { addPatient } from "../../../db";
 
-export default async function handler(req, res) {
+export default async (req, res) => {
   if (req.method === "POST") {
-    const { firstName, lastName, dateOfBirth, country } = req.body;
-
     try {
+      const { firstName, lastName, dateOfBirth, country } = req.body;
+
+      if (!firstName || !lastName || !dateOfBirth || !country) {
+        // Handle validation errors
+        return res.status(400).json({ message: "All fields are required" });
+      }
+
+      // Insert the patient data into the database using the function from db.js
       await addPatient(firstName, lastName, dateOfBirth, country);
-      res.status(200).json({ message: "Patient inserted successfully" });
+
+      res.status(200).json({ message: "Patient added successfully" });
     } catch (error) {
-      res.status(500).json({ error: "Error inserting patient" });
+      console.error("Error adding patient:", error);
+      res.status(500).json({ message: "Internal Server Error" });
     }
   } else {
-    res.status(405).json({ error: "Method not allowed" });
+    res.status(405).json({ message: "Method Not Allowed" });
   }
-}
+};

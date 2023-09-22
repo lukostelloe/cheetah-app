@@ -1,15 +1,13 @@
 const pgp = require("pg-promise")();
 const db = pgp({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: true,
 });
 
 async function addPatient(firstName, lastName, dateOfBirth, country) {
   try {
     await db.none(
-      "INSERT INTO patients (first_name, last_name, date_of_birth, country) VALUES ($1, $2, $3, $4)",
+      "INSERT INTO patients (firstName, lastName, dateOfBirth, country) VALUES ($1, $2, $3, $4)",
       [firstName, lastName, dateOfBirth, country]
     );
     console.log("Patient inserted successfully");
@@ -19,4 +17,4 @@ async function addPatient(firstName, lastName, dateOfBirth, country) {
   }
 }
 
-export { addPatient };
+export { addPatient, db };

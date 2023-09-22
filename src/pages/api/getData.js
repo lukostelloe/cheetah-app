@@ -2,6 +2,7 @@
 
 import { Client } from "pg";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   try {
     // Create a PostgreSQL client instance

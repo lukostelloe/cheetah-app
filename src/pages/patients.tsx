@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import PatientTable from "@/components/PatientTable";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Page } from "@/components/Page";
+import CollapsibleTable from "@/components/MuiTable";
 
 function Patients() {
   const [patientModalOpen, setPatientModalOpen] = useState(false);
@@ -44,7 +45,8 @@ function Patients() {
         ))}
       </ul>
       <SectionHeader>Patients Table:</SectionHeader>
-      <PatientTable data={data} />
+      {/* <PatientTable data={data} /> */}
+      <CollapsibleTable data={data} />
     </Page>
   );
 }

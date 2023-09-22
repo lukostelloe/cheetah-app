@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import { styled } from "@stitches/react";
-import { mockPatients } from "mockData/mockPatients";
 
 // Styles
 const FormWrapper = styled("div", {
@@ -32,22 +31,44 @@ const StyledForm = styled("form", {
 
 function PatientInputModal() {
   const [patientModalOpen, setPatientModalOpen] = useState(true);
-  const [patientList, setPatientList] = useState(mockPatients);
-
+  const [patientList, setPatientList] = useState([]);
   const [newPatient, setNewPatient] = useState({
     firstName: "",
     lastName: "",
-    dateOfBirth: 0,
+    dateOfBirth: "",
     country: "",
   });
 
-  // @ts-expect-error
-  const addNewPatient = (e) => {
+  const addNewPatient = async (e: any) => {
     e.preventDefault();
-    // @ts-expect-error
-    setPatientList((mockPatients) => [newPatient, ...mockPatients]);
-    setPatientModalOpen(false);
+    try {
+      const response = await fetch("/api/addPatient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPatient),
+      });
+
+      if (response.ok) {
+        alert("Patient added successfully");
+        setNewPatient({
+          firstName: "",
+          lastName: "",
+          dateOfBirth: "",
+          country: "",
+        });
+        setPatientModalOpen(false);
+      } else {
+        alert("Error adding patient");
+      }
+    } catch (error) {
+      console.error("Error adding patient:", error);
+      alert("Error adding patient");
+    }
   };
+
+  console.log(newPatient);
 
   return (
     <>
@@ -55,43 +76,45 @@ function PatientInputModal() {
         <Backdrop>
           <FormWrapper>
             <StyledForm onSubmit={addNewPatient}>
-              <label htmlFor="name">First Name:</label>
+              <label htmlFor="firstName">First Name:</label>
               <input
                 value={newPatient.firstName}
-                name="name"
+                name="firstName"
                 placeholder="First Name"
                 onChange={(e) =>
                   setNewPatient({ ...newPatient, firstName: e.target.value })
                 }
               />
-              <label htmlFor="name">Surname:</label>
+              <label htmlFor="lastName">Surname:</label>
               <input
                 value={newPatient.lastName}
-                name="name"
+                name="lastName"
                 placeholder="Surname"
                 onChange={(e) =>
                   setNewPatient({ ...newPatient, lastName: e.target.value })
                 }
               />
 
-              <label htmlFor="dob">Date Of Birth:</label>
+              <label htmlFor="dateOfBirth">Date Of Birth:</label>
               <input
-                name="dob"
-                placeholder="Age"
+                value={newPatient.dateOfBirth}
+                name="dateOfBirth"
+                placeholder="Date Of Birth"
                 onChange={(e) =>
-                  // @ts-expect-error
-                  setNewPatient({ ...newPatient, dob: e.target.value })
+                  setNewPatient({ ...newPatient, dateOfBirth: e.target.value })
                 }
               />
-              <label htmlFor="Nationality">Country of origin</label>
+              <label htmlFor="country">Country of Origin:</label>
               <input
-                name="nationality"
-                placeholder="Country of origin"
+                value={newPatient.country}
+                name="country"
+                placeholder="Country of Origin"
                 onChange={(e) =>
                   setNewPatient({ ...newPatient, country: e.target.value })
                 }
               />
-              <Button label="Add" />
+
+              <Button label="Add" type="submit" />
             </StyledForm>
           </FormWrapper>
         </Backdrop>
