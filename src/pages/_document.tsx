@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="stylesheet" href="./dist/tailwind.css"></link>
       </Head>
       <body>
         <Main />

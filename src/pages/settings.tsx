@@ -4,7 +4,7 @@ import { Page } from "@/components/Page";
 function Settings() {
   return (
     <Page>
-      <div>Settings</div>
+      <div>settings</div>
     </Page>
   );
 }
