@@ -25,7 +25,8 @@
     "**/*.tsx",
     "src/pages/apitest.jsx",
     "src/components/accordian.jsx",
-    "src/pages/test.js"
+    "src/pages/test.js",
+    "__tests__/Settings.test.jsx"
   ],
   "exclude": ["node_modules"]
 }
